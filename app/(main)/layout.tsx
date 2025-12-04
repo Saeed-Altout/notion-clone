@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { Navigation } from "./_components/navigation";
 
 import { Spinner } from "@/components/ui/spinner";
+import { SearchCommand } from "@/components/search-command";
 
 export default function MainLayout({
   children,
@@ -29,6 +30,7 @@ export default function MainLayout({
     <div className="h-full flex  ">
       <Navigation />
       <main className="flex-1 h-full overflow-y-auto">{children}</main>
+      <SearchCommand />
     </div>
   );
 }

@@ -2,7 +2,6 @@
 
 import {
   ChevronsLeftIcon,
-  FileIcon,
   MenuIcon,
   PlusCircleIcon,
   PlusIcon,
@@ -13,22 +12,23 @@ import {
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
-import { useMutation, useQuery } from "convex/react";
+import { useMutation } from "convex/react";
+import { toast } from "sonner";
 
 import { UserItem } from "./user-item";
+import { Item } from "./item";
+import { DocumentList } from "./document-list";
+import { TrashBox } from "./trash-box";
 
 import { cn } from "@/lib/utils";
 import { api } from "@/convex/_generated/api";
-import { Item } from "./item";
-import { toast } from "sonner";
-import { DocumentList } from "./document-list";
+import { useSearchStore } from "@/hooks/use-search-store";
 
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { TrashBox } from "./trash-box";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -42,6 +42,7 @@ export function Navigation() {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(isMobile);
 
   const create = useMutation(api.documents.create);
+  const search = useSearchStore((state) => state.toggle);
 
   const onCreate = () => {
     const promise = create({ title: "Untitled" });
@@ -163,7 +164,7 @@ export function Navigation() {
         </div>
         <div>
           <UserItem />
-          <Item label="Search" icon={SearchIcon} isSearch onClick={() => {}} />
+          <Item label="Search" icon={SearchIcon} isSearch onClick={search} />
           <Item label="Settings" icon={SettingsIcon} onClick={() => {}} />
           <Item onClick={onCreate} label="New page" icon={PlusCircleIcon} />
         </div>
