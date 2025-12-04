@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
             storageKey="jotion-theme-2"
           >
             {children}
+            <Toaster position="top-center" />
           </ThemeProvider>
         </ConvexClientProvider>
       </body>

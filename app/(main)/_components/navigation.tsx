@@ -1,12 +1,25 @@
 "use client";
 
-import { ChevronsLeftIcon, MenuIcon } from "lucide-react";
+import {
+  ChevronsLeftIcon,
+  FileIcon,
+  MenuIcon,
+  PlusCircleIcon,
+  SearchIcon,
+  SettingsIcon,
+} from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
+import { useMutation, useQuery } from "convex/react";
+
+import { UserItem } from "./user-item";
 
 import { cn } from "@/lib/utils";
-import { UserItem } from "./user-item";
+import { api } from "@/convex/_generated/api";
+import { Item } from "./item";
+import { toast } from "sonner";
+import { DocumentList } from "./document-list";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -18,6 +31,17 @@ export function Navigation() {
 
   const [isResetting, setIsResetting] = useState<boolean>(false);
   const [isCollapsed, setIsCollapsed] = useState<boolean>(isMobile);
+
+  const create = useMutation(api.documents.create);
+
+  const onCreate = () => {
+    const promise = create({ title: "Untitled" });
+    toast.promise(promise, {
+      loading: "Creating a new note...",
+      success: "New note created!",
+      error: "Failed to create a new note",
+    });
+  };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -113,7 +137,7 @@ export function Navigation() {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-40",
+          "group/sidebar h-full bg-sidebar overflow-y-auto relative flex w-60 flex-col z-40",
           isResetting && "transition-all duration-300 ease-in-out",
           isMobile && "w-0"
         )}
@@ -130,9 +154,12 @@ export function Navigation() {
         </div>
         <div>
           <UserItem />
+          <Item label="Search" icon={SearchIcon} isSearch onClick={() => {}} />
+          <Item label="Settings" icon={SettingsIcon} onClick={() => {}} />
+          <Item onClick={onCreate} label="New page" icon={PlusCircleIcon} />
         </div>
         <div className="mt-4">
-          <p>Documents items</p>
+          <DocumentList />
         </div>
         <div
           onMouseDown={handleMouseDown}
