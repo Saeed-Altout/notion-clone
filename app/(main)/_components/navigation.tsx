@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
 
 import { cn } from "@/lib/utils";
+import { UserItem } from "./user-item";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -112,7 +113,7 @@ export function Navigation() {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-99999",
+          "group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-40",
           isResetting && "transition-all duration-300 ease-in-out",
           isMobile && "w-0"
         )}
@@ -120,7 +121,7 @@ export function Navigation() {
         <div
           role="button"
           className={cn(
-            "h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-6 right-3 opacity-0 group-hover/sidebar:opacity-100 transition cursor-pointer z-50 flex items-center justify-center",
+            "h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-4 right-3 opacity-0 group-hover/sidebar:opacity-100 transition cursor-pointer z-50 flex items-center justify-center",
             isMobile && "opacity-100"
           )}
           onClick={collapse}
@@ -128,7 +129,7 @@ export function Navigation() {
           <ChevronsLeftIcon className="h-4 w-4" />
         </div>
         <div>
-          <p>Actions items</p>
+          <UserItem />
         </div>
         <div className="mt-4">
           <p>Documents items</p>
@@ -142,7 +143,7 @@ export function Navigation() {
       <div
         ref={navbarRef}
         className={cn(
-          "absolute top-0 left-60 z-999999 w-[calc(100%-240px)]",
+          "absolute top-0 left-60 z-50 w-[calc(100%-240px)]",
           isResetting && "transition-all duration-300 ease-in-out",
           isMobile && "left-0 w-full"
         )}
