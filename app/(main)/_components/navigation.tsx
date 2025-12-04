@@ -5,8 +5,10 @@ import {
   FileIcon,
   MenuIcon,
   PlusCircleIcon,
+  PlusIcon,
   SearchIcon,
   SettingsIcon,
+  TrashIcon,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -20,6 +22,13 @@ import { api } from "@/convex/_generated/api";
 import { Item } from "./item";
 import { toast } from "sonner";
 import { DocumentList } from "./document-list";
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { TrashBox } from "./trash-box";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -160,6 +169,15 @@ export function Navigation() {
         </div>
         <div className="mt-4">
           <DocumentList />
+          <Item onClick={onCreate} label="Add a page" icon={PlusIcon} />
+          <Popover>
+            <PopoverTrigger className="w-full mt-4">
+              <Item label="Trash" icon={TrashIcon} onClick={() => {}} />
+            </PopoverTrigger>
+            <PopoverContent side={isMobile ? "bottom" : "right"}>
+              <TrashBox />
+            </PopoverContent>
+          </Popover>
         </div>
         <div
           onMouseDown={handleMouseDown}
