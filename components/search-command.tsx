@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "convex/react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
@@ -24,6 +24,8 @@ export function SearchCommand() {
   const router = useRouter();
   const documents = useQuery(api.documents.getSearch);
 
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
   const toggle = useSearchStore((state) => state.toggle);
   const onClose = useSearchStore((state) => state.onClose);
   const onOpen = useSearchStore((state) => state.onOpen);
@@ -44,6 +46,15 @@ export function SearchCommand() {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, [toggle]);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <CommandDialog open={isOpen} onOpenChange={isOpen ? onClose : onOpen}>

@@ -23,6 +23,7 @@ import { TrashBox } from "./trash-box";
 import { cn } from "@/lib/utils";
 import { api } from "@/convex/_generated/api";
 import { useSearchStore } from "@/hooks/use-search-store";
+import { useSettingsStore } from "@/hooks/use-settings";
 
 import {
   Popover,
@@ -43,6 +44,7 @@ export function Navigation() {
 
   const create = useMutation(api.documents.create);
   const search = useSearchStore((state) => state.toggle);
+  const settings = useSettingsStore();
 
   const onCreate = () => {
     const promise = create({ title: "Untitled" });
@@ -165,7 +167,11 @@ export function Navigation() {
         <div>
           <UserItem />
           <Item label="Search" icon={SearchIcon} isSearch onClick={search} />
-          <Item label="Settings" icon={SettingsIcon} onClick={() => {}} />
+          <Item
+            label="Settings"
+            icon={SettingsIcon}
+            onClick={settings.onOpen}
+          />
           <Item onClick={onCreate} label="New page" icon={PlusCircleIcon} />
         </div>
         <div className="mt-4">
