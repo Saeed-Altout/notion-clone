@@ -10,7 +10,7 @@ import {
   TrashIcon,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
 import { useMutation } from "convex/react";
 import { toast } from "sonner";
@@ -30,9 +30,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Navbar } from "./navbar";
 
 export function Navigation() {
   const pathname = usePathname();
+  const params = useParams();
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isResizingRef = useRef<boolean>(false);
@@ -200,15 +202,19 @@ export function Navigation() {
           isMobile && "left-0 w-full"
         )}
       >
-        <nav className="bg-transparent px-3 py-2 h-full">
-          {isCollapsed && (
-            <MenuIcon
-              role="button"
-              className="h-4 w-4 text-muted-foreground"
-              onClick={resetWidth}
-            />
-          )}
-        </nav>
+        {!!params.documentId ? (
+          <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
+        ) : (
+          <nav className="bg-transparent px-3 py-2 h-full">
+            {isCollapsed && (
+              <MenuIcon
+                role="button"
+                className="h-4 w-4 text-muted-foreground"
+                onClick={resetWidth}
+              />
+            )}
+          </nav>
+        )}
       </div>
     </>
   );

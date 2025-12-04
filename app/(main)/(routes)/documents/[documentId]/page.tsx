@@ -1,0 +1,3 @@
+export default function DocumentIdPage() {
+  return <div>DocumentIdPage</div>;
+}
