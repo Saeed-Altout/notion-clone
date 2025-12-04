@@ -14,7 +14,7 @@ import {
 
 interface ConfirmModalProps {
   children: React.ReactNode;
-  onConfirm: () => void;
+  onConfirm?: () => void;
 }
 
 export function ConfirmModal({ children, onConfirm }: ConfirmModalProps) {
@@ -22,7 +22,7 @@ export function ConfirmModal({ children, onConfirm }: ConfirmModalProps) {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.stopPropagation();
-    onConfirm();
+    onConfirm?.();
   };
 
   return (

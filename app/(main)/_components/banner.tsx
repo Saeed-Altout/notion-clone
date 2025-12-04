@@ -17,15 +17,6 @@ export function Banner({ documentId }: { documentId: Id<"documents"> }) {
   const remove = useMutation(api.documents.remove);
   const restore = useMutation(api.documents.restore);
 
-  const onRestore = () => {
-    const promise = restore({ id: documentId });
-    toast.promise(promise, {
-      loading: "Restoring note...",
-      success: "Note restored!",
-      error: "Failed to restore note",
-    });
-  };
-
   const onRemove = () => {
     const promise = remove({ id: documentId });
 
@@ -36,6 +27,15 @@ export function Banner({ documentId }: { documentId: Id<"documents"> }) {
     });
 
     router.push("/documents");
+  };
+
+  const onRestore = () => {
+    const promise = restore({ id: documentId });
+    toast.promise(promise, {
+      loading: "Restoring note...",
+      success: "Note restored!",
+      error: "Failed to restore note",
+    });
   };
 
   return (
