@@ -10,7 +10,7 @@ import {
   TrashIcon,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { usePathname, useParams } from "next/navigation";
+import { usePathname, useParams, useRouter } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
 import { useMutation } from "convex/react";
 import { toast } from "sonner";
@@ -35,6 +35,7 @@ import { Navbar } from "./navbar";
 export function Navigation() {
   const pathname = usePathname();
   const params = useParams();
+  const router = useRouter();
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isResizingRef = useRef<boolean>(false);
@@ -49,7 +50,9 @@ export function Navigation() {
   const settings = useSettingsStore();
 
   const onCreate = () => {
-    const promise = create({ title: "Untitled" });
+    const promise = create({ title: "Untitled" }).then((documentId) => {
+      router.push(`/documents/${documentId}`);
+    });
     toast.promise(promise, {
       loading: "Creating a new note...",
       success: "New note created!",
