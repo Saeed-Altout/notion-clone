@@ -42,7 +42,7 @@ export function Title({ initialData }: { initialData: Doc<"documents"> }) {
 
   return (
     <div className="flex items-center gap-x-1">
-      {!!initialData.icon && <p>{initialData.title}</p>}
+      {!!initialData.icon && <p>{initialData.icon}</p>}
       {isEditing ? (
         <Input
           value={title}
