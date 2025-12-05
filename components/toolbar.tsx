@@ -9,6 +9,7 @@ import { IconPicker } from "./icon-picker";
 import { Button } from "./ui/button";
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
+import { useCoverImage } from "@/hooks/use-cover-image";
 
 export function Toolbar({
   initialData,
@@ -20,6 +21,8 @@ export function Toolbar({
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [value, setValue] = useState<string>(initialData.title);
+
+  const coverImage = useCoverImage();
 
   const update = useMutation(api.documents.update);
   const removeIcon = useMutation(api.documents.removeIcon);
@@ -87,7 +90,6 @@ export function Toolbar({
               variant="outline"
               size="sm"
               className="text-muted-foreground text-xs"
-              onClick={() => {}}
             >
               <SmileIcon className="h-4 w-4" />
               Add icon
@@ -99,7 +101,7 @@ export function Toolbar({
             variant="outline"
             size="sm"
             className="text-muted-foreground text-xs"
-            onClick={() => {}}
+            onClick={coverImage.onOpen}
           >
             <ImageIcon className="h-4 w-4" />
             Add cover
