@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { useParams } from "next/navigation";
 import { Id } from "@/convex/_generated/dataModel";
 import { useEdgeStore } from "@/lib/edgestore";
+import { Skeleton } from "./ui/skeleton";
 
 export function Cover({ url, preview }: { url?: string; preview?: boolean }) {
   const { edgestore } = useEdgeStore();
@@ -55,3 +56,7 @@ export function Cover({ url, preview }: { url?: string; preview?: boolean }) {
     </div>
   );
 }
+
+Cover.Skeleton = function CoverSkeleton() {
+  return <Skeleton className="h-[12vh] w-full" />;
+};
