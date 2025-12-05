@@ -7,7 +7,7 @@ import { BlockNoteView } from "@blocknote/mantine";
 import { useTheme } from "next-themes";
 import { useEdgeStore } from "@/lib/edgestore";
 
-export function Editor({
+export default function Editor({
   onChange,
   initialContent,
   editable,
