@@ -72,7 +72,7 @@ export function SearchCommand() {
               {document.icon ? (
                 <p className="mr-2 text-[18px]">{document.icon}</p>
               ) : (
-                <FileIcon className="h-4 w-4 mr-2" />
+                <FileIcon className="mr-2 h-4 w-4" />
               )}
               <span>{document.title}</span>
             </CommandItem>

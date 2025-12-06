@@ -39,15 +39,15 @@ export function Banner({ documentId }: { documentId: Id<"documents"> }) {
   };
 
   return (
-    <div className="w-full bg-destructive text-center text-white p-2 text-sm flex items-center gap-x-2 justify-center">
+    <div className="bg-destructive flex w-full items-center justify-center gap-x-2 p-2 text-center text-sm text-white">
       <p>This page is in the trash</p>
       <Button variant="outline" size="sm" onClick={onRestore}>
-        <UndoIcon className="w-4 h-4" />
+        <UndoIcon className="h-4 w-4" />
         Restore page
       </Button>
       <ConfirmModal onConfirm={onRemove}>
         <Button variant="outline" size="sm">
-          <TrashIcon className="w-4 h-4" />
+          <TrashIcon className="h-4 w-4" />
           Delete forever
         </Button>
       </ConfirmModal>

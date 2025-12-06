@@ -3,13 +3,13 @@ import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <div className="flex items-center w-full bg-background   z-50 p-6">
+    <div className="bg-background z-50 flex w-full items-center p-6">
       <Logo />
-      <div className="md:ml-auto w-full justify-between md:justify-end flex items-center gap-x-2 text-muted-foreground">
-        <Button variant="ghost" size="sm">
+      <div className="text-muted-foreground flex w-full items-center justify-between gap-x-2 md:ml-auto md:justify-end">
+        <Button variant="link" size="xs">
           Privacy Policy
         </Button>
-        <Button variant="ghost" size="sm">
+        <Button variant="link" size="xs">
           Terms of Conditions
         </Button>
       </div>

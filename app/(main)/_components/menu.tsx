@@ -44,11 +44,11 @@ export function Menu({ documentId }: { documentId: Id<"documents"> }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-60" align="end" forceMount>
         <DropdownMenuItem onClick={onArchive}>
-          <TrashIcon className="h-4 w-4 mr-2" />
+          <TrashIcon className="mr-2 h-4 w-4" />
           Delete
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <div className="text-xs text-muted-foreground p-2">
+        <div className="text-muted-foreground p-2 text-xs">
           Last edited by: {user?.fullName}
         </div>
       </DropdownMenuContent>

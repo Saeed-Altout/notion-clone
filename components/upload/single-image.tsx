@@ -120,7 +120,7 @@ const SingleImageDropzone = React.forwardRef<
             // User-friendly error messages
             const messages: Record<string, string> = {
               "file-too-large": `The file is too large. Max size is ${formatFileSize(
-                maxSize ?? 0
+                maxSize ?? 0,
               )}.`,
               "file-invalid-type": "Invalid file type.",
               "too-many-files": "You can only upload one file.",
@@ -153,9 +153,9 @@ const SingleImageDropzone = React.forwardRef<
         displayUrl && DROPZONE_VARIANTS.image,
         isDragReject && DROPZONE_VARIANTS.reject,
         isDragAccept && DROPZONE_VARIANTS.accept,
-        className
+        className,
       ),
-    [isFocused, isDisabled, displayUrl, isDragAccept, isDragReject, className]
+    [isFocused, isDisabled, displayUrl, isDragAccept, isDragReject, className],
   );
 
   // Combined error message from dropzone or file state
@@ -184,8 +184,8 @@ const SingleImageDropzone = React.forwardRef<
           // Placeholder content shown when no image is selected
           <div
             className={cn(
-              "flex flex-col items-center justify-center gap-2 text-center text-xs text-muted-foreground",
-              isDisabled && "opacity-50"
+              "text-muted-foreground flex flex-col items-center justify-center gap-2 text-center text-xs",
+              isDisabled && "opacity-50",
             )}
           >
             <UploadCloudIcon className="mb-1 h-7 w-7" />
@@ -212,7 +212,7 @@ const SingleImageDropzone = React.forwardRef<
           fileState.status !== "COMPLETE" && (
             <button
               type="button"
-              className="group pointer-events-auto absolute right-1 top-1 z-10 transform rounded-full border border-muted-foreground bg-background p-1 shadow-md transition-all hover:scale-110"
+              className="group border-muted-foreground bg-background pointer-events-auto absolute top-1 right-1 z-10 transform rounded-full border p-1 shadow-md transition-all hover:scale-110"
               onClick={(e) => {
                 e.stopPropagation(); // Prevent triggering dropzone click
                 if (fileState.status === "UPLOADING") {
@@ -224,9 +224,9 @@ const SingleImageDropzone = React.forwardRef<
               }}
             >
               {fileState.status === "UPLOADING" ? (
-                <XIcon className="block h-4 w-4 text-muted-foreground" />
+                <XIcon className="text-muted-foreground block h-4 w-4" />
               ) : (
-                <Trash2Icon className="block h-4 w-4 text-muted-foreground" />
+                <Trash2Icon className="text-muted-foreground block h-4 w-4" />
               )}
             </button>
           )}
@@ -234,7 +234,7 @@ const SingleImageDropzone = React.forwardRef<
 
       {/* Error message display */}
       {errorMessage && (
-        <div className="mt-2 flex items-center text-xs text-destructive">
+        <div className="text-destructive mt-2 flex items-center text-xs">
           <AlertCircleIcon className="mr-1 h-4 w-4" />
           <span>{errorMessage}</span>
         </div>

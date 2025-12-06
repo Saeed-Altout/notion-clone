@@ -82,7 +82,7 @@ export function Navigation() {
       navbarRef.current.style.setProperty("left", `${newWidth}px`);
       navbarRef.current.style.setProperty(
         "width",
-        `calc(100% - ${newWidth}px)`
+        `calc(100% - ${newWidth}px)`,
       );
     }
   };
@@ -103,7 +103,7 @@ export function Navigation() {
       navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
       navbarRef.current.style.setProperty(
         "width",
-        isMobile ? "0" : "calc(100% - 240px)"
+        isMobile ? "0" : "calc(100% - 240px)",
       );
 
       setTimeout(() => {
@@ -154,16 +154,16 @@ export function Navigation() {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar h-full bg-sidebar overflow-y-auto relative flex w-60 flex-col z-40",
+          "group/sidebar bg-sidebar relative z-40 flex h-full w-60 flex-col overflow-y-auto",
           isResetting && "transition-all duration-300 ease-in-out",
-          isMobile && "w-0"
+          isMobile && "w-0",
         )}
       >
         <div
           role="button"
           className={cn(
-            "h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-4 right-3 opacity-0 group-hover/sidebar:opacity-100 transition cursor-pointer z-50 flex items-center justify-center",
-            isMobile && "opacity-100"
+            "text-muted-foreground absolute top-4 right-3 z-50 flex h-6 w-6 cursor-pointer items-center justify-center rounded-sm opacity-0 transition group-hover/sidebar:opacity-100 hover:bg-neutral-300 dark:hover:bg-neutral-600",
+            isMobile && "opacity-100",
           )}
           onClick={collapse}
         >
@@ -183,7 +183,7 @@ export function Navigation() {
           <DocumentList />
           <Item onClick={onCreate} label="Add a page" icon={PlusIcon} />
           <Popover>
-            <PopoverTrigger className="w-full mt-4">
+            <PopoverTrigger className="mt-4 w-full">
               <Item label="Trash" icon={TrashIcon} onClick={() => {}} />
             </PopoverTrigger>
             <PopoverContent side={isMobile ? "bottom" : "right"}>
@@ -193,7 +193,7 @@ export function Navigation() {
         </div>
         <div
           onMouseDown={handleMouseDown}
-          className="opacity-0 group-hover/sidebar:opacity-100 transition-opacity cursor-ew-resize absolute right-0 top-0 h-full w-1 bg-primary/10"
+          className="bg-primary/10 absolute top-0 right-0 h-full w-1 cursor-ew-resize opacity-0 transition-opacity group-hover/sidebar:opacity-100"
           onClick={resetWidth}
         />
       </aside>
@@ -202,17 +202,17 @@ export function Navigation() {
         className={cn(
           "absolute top-0 left-60 z-50 w-[calc(100%-240px)]",
           isResetting && "transition-all duration-300 ease-in-out",
-          isMobile && "left-0 w-full"
+          isMobile && "left-0 w-full",
         )}
       >
         {!!params.documentId ? (
           <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
         ) : (
-          <nav className="bg-transparent px-3 py-2 h-full">
+          <nav className="h-full bg-transparent px-3 py-2">
             {isCollapsed && (
               <MenuIcon
                 role="button"
-                className="h-4 w-4 text-muted-foreground"
+                className="text-muted-foreground h-4 w-4"
                 onClick={resetWidth}
               />
             )}

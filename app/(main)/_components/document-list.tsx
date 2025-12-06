@@ -57,9 +57,9 @@ export function DocumentList({
       <p
         style={{ paddingLeft: level ? `${level * 12 + 12}px` : "12px" }}
         className={cn(
-          "hidden text-sm font-medium text-muted-foreground/80",
+          "text-muted-foreground/80 hidden text-sm font-medium",
           expanded && "last:block",
-          level === 0 && "hidden"
+          level === 0 && "hidden",
         )}
       >
         No pages inside

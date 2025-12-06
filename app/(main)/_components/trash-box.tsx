@@ -31,7 +31,7 @@ export function TrashBox() {
   };
   const onRestore = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    documentId: Id<"documents">
+    documentId: Id<"documents">,
   ) => {
     e.stopPropagation();
     const promise = restore({ id: documentId });
@@ -57,25 +57,25 @@ export function TrashBox() {
 
   if (!documents) {
     return (
-      <div className="p-4 flex items-center justify-center h-full">
+      <div className="flex h-full items-center justify-center p-4">
         <Spinner />
       </div>
     );
   }
 
   return (
-    <div className="text-sm text-muted-foreground">
+    <div className="text-muted-foreground text-sm">
       <div className="flex items-center gap-x-1 p-2">
         <SearchIcon className="h-4 w-4" />
         <Input
           placeholder="Filter by page title..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-7 px-2 focus-visible:ring-transparent bg-secondary"
+          className="bg-secondary h-7 px-2 focus-visible:ring-transparent"
         />
       </div>
       <div className="mt-2 px-1 pb-1">
-        <p className="hidden last:block text-xs text-center text-muted-foreground pb-2">
+        <p className="text-muted-foreground hidden pb-2 text-center text-xs last:block">
           No pages in trash
         </p>
         {filteredDocuments?.map((document) => (
@@ -83,7 +83,7 @@ export function TrashBox() {
             key={document._id}
             role="button"
             onClick={() => onClick(document._id)}
-            className="text-sm rounded-sm w-full hover:bg-primary/5 flex items-center text-primary justify-between"
+            className="hover:bg-primary/5 text-primary flex w-full items-center justify-between rounded-sm text-sm"
           >
             <span className="truncate pl-2">{document.title}</span>
             <div className="flex items-center">
@@ -92,14 +92,14 @@ export function TrashBox() {
                 role="button"
                 className="rounded-sm p-2 hover:bg-neutral-300 dark:hover:bg-neutral-600"
               >
-                <UndoIcon className="h-4 w-4 text-muted-foreground" />
+                <UndoIcon className="text-muted-foreground h-4 w-4" />
               </div>
               <ConfirmModal onConfirm={() => onRemove(document._id)}>
                 <div
                   role="button"
                   className="rounded-sm p-2 hover:bg-neutral-300 dark:hover:bg-neutral-600"
                 >
-                  <TrashIcon className="h-4 w-4 text-muted-foreground" />
+                  <TrashIcon className="text-muted-foreground h-4 w-4" />
                 </div>
               </ConfirmModal>
             </div>

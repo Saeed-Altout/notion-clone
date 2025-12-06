@@ -16,7 +16,7 @@ export default function MainLayout({
 
   if (isLoading) {
     return (
-      <div className="h-full flex items-center justify-center  ">
+      <div className="flex h-full items-center justify-center">
         <Spinner />
       </div>
     );
@@ -27,9 +27,9 @@ export default function MainLayout({
   }
 
   return (
-    <div className="h-full flex  ">
+    <div className="flex h-full">
       <Navigation />
-      <main className="flex-1 h-full overflow-y-auto">{children}</main>
+      <main className="h-full flex-1 overflow-y-auto">{children}</main>
       <SearchCommand />
     </div>
   );

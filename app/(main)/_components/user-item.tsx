@@ -20,18 +20,18 @@ export function UserItem() {
       <DropdownMenuTrigger asChild>
         <div
           role="button"
-          className="flex items-center text-sm p-3 w-full hover:bg-primary/5"
+          className="hover:bg-primary/5 flex w-full items-center p-3 text-sm"
         >
-          <div className="flex items-center gap-x-2 max-w-[150px]">
+          <div className="flex max-w-[150px] items-center gap-x-2">
             <Avatar className="h-8 w-8">
               <AvatarImage src={user?.imageUrl} />
               <AvatarFallback>{user?.firstName?.charAt(0)}</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-              <p className="font-medium line-clamp-1">{user?.fullName}</p>
+              <p className="line-clamp-1 font-medium">{user?.fullName}</p>
             </div>
           </div>
-          <ChevronsUpDownIcon className="h-4 w-4 ml-2 shrink-0 text-muted-foreground" />
+          <ChevronsUpDownIcon className="text-muted-foreground ml-2 h-4 w-4 shrink-0" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-60" align="start" forceMount>
@@ -41,10 +41,10 @@ export function UserItem() {
             <AvatarFallback>{user?.firstName?.charAt(0)}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none line-clamp-1">
+            <p className="line-clamp-1 text-sm leading-none font-medium">
               {user?.fullName} &apos;s Jotion
             </p>
-            <p className="text-xs leading-none text-muted-foreground line-clamp-1">
+            <p className="text-muted-foreground line-clamp-1 text-xs leading-none">
               {user?.emailAddresses[0].emailAddress}
             </p>
           </div>
@@ -53,7 +53,7 @@ export function UserItem() {
         <DropdownMenuItem
           variant="destructive"
           asChild
-          className="cursor-pointer w-full"
+          className="w-full cursor-pointer"
         >
           <SignOutButton>Log out</SignOutButton>
         </DropdownMenuItem>

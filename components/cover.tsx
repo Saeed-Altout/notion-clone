@@ -35,14 +35,14 @@ export function Cover({ url, preview }: { url?: string; preview?: boolean }) {
   return (
     <div
       className={cn(
-        "relative h-[35vh] w-full group",
+        "group relative h-[35vh] w-full",
         url && "bg-muted",
-        !url && "h-[12vh]"
+        !url && "h-[12vh]",
       )}
     >
       {!!url && <Image src={url} alt="Cover" fill className="object-cover" />}
       {url && !preview && (
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-5 right-5 flex items-center gap-x-2">
+        <div className="absolute right-5 bottom-5 flex items-center gap-x-2 opacity-0 transition-opacity group-hover:opacity-100">
           <Button size="sm" onClick={() => coverImage.onReplace(url)}>
             <ImageIcon />
             Change cover

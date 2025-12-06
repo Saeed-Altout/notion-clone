@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Error() {
   return (
-    <div className="h-full flex flex-col items-center justify-center space-y-4">
+    <div className="flex h-full flex-col items-center justify-center space-y-4">
       <Image
         src="/error.png"
         alt="Error"

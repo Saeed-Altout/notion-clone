@@ -26,7 +26,7 @@ export function Navbar({
 
   if (document === undefined) {
     return (
-      <nav className="bg-background px-3 py-2 w-full flex items-center gap-x-4">
+      <nav className="bg-background flex w-full items-center gap-x-4 px-3 py-2">
         <Title.Skeleton />
         <div className="flex items-center gap-x-2">
           <Menu.Skeleton />
@@ -41,15 +41,15 @@ export function Navbar({
 
   return (
     <>
-      <nav className="bg-background px-3 py-2 w-full flex items-center gap-x-4">
+      <nav className="bg-background flex w-full items-center gap-x-4 px-3 py-2">
         {isCollapsed && (
           <MenuIcon
             role="button"
             onClick={onResetWidth}
-            className="w-4 h-4 text-muted-foreground"
+            className="text-muted-foreground h-4 w-4"
           />
         )}
-        <div className="flex items-center justify-between w-full">
+        <div className="flex w-full items-center justify-between">
           <Title initialData={document} />
           <div className="flex items-center gap-x-2">
             <Publish initialData={document} />

@@ -68,7 +68,7 @@ export function Publish({ initialData }: { initialData: Doc<"documents"> }) {
         <Button variant="ghost" size="sm">
           Publish
           {initialData.isPublished && (
-            <GlobeIcon className="h-4 w-4 ml-2 text-sky-500" />
+            <GlobeIcon className="ml-2 h-4 w-4 text-sky-500" />
           )}
         </Button>
       </PopoverTrigger>
@@ -84,14 +84,14 @@ export function Publish({ initialData }: { initialData: Doc<"documents"> }) {
             <div className="flex items-center">
               <input
                 value={url}
-                className="flex-1 px-2 text-xs border rounded-l-md h-8 bg-muted truncate"
+                className="bg-muted h-8 flex-1 truncate rounded-l-md border px-2 text-xs"
                 disabled
               />
               <Button onClick={onCopy} disabled={copied} size="icon">
                 {copied ? (
-                  <CheckIcon className="w-4 h-4" />
+                  <CheckIcon className="h-4 w-4" />
                 ) : (
-                  <CopyIcon className="w-4 h-4" />
+                  <CopyIcon className="h-4 w-4" />
                 )}
               </Button>
             </div>
@@ -105,9 +105,9 @@ export function Publish({ initialData }: { initialData: Doc<"documents"> }) {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center">
-            <GlobeIcon className="h-8 w-8 text-muted-foreground mb-2" />
-            <p className="text-sm font-medium mb-2">Publish this document</p>
-            <p className="text-xs text-muted-foreground mb-4">
+            <GlobeIcon className="text-muted-foreground mb-2 h-8 w-8" />
+            <p className="mb-2 text-sm font-medium">Publish this document</p>
+            <p className="text-muted-foreground mb-4 text-xs">
               Share your work with others.
             </p>
             <Button

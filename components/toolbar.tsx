@@ -62,18 +62,18 @@ export function Toolbar({
   };
 
   return (
-    <div className="pl-[54px] relative group">
+    <div className="group relative pl-[54px]">
       {!!initialData.icon && !preview && (
-        <div className="flex items-center gap-x-2 group/icon pt-6">
+        <div className="group/icon flex items-center gap-x-2 pt-6">
           <IconPicker onChange={onIconSelect}>
-            <p className="text-6xl hover:opacity-75 transition">
+            <p className="text-6xl transition hover:opacity-75">
               {initialData.icon}
             </p>
           </IconPicker>
           <Button
             variant="outline"
             size="icon"
-            className="rounded-full opacity-0 group-hover/icon:opacity-100 transition text-muted-foreground text-xs"
+            className="text-muted-foreground rounded-full text-xs opacity-0 transition group-hover/icon:opacity-100"
             onClick={onIconRemove}
           >
             <XIcon className="h-4 w-4" />
@@ -81,9 +81,9 @@ export function Toolbar({
         </div>
       )}
       {!!initialData.icon && preview && (
-        <p className="text-6xl pt-6">{initialData.icon}</p>
+        <p className="pt-6 text-6xl">{initialData.icon}</p>
       )}
-      <div className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-x-2 py-4">
+      <div className="flex items-center gap-x-2 py-4 opacity-0 transition-opacity group-hover:opacity-100">
         {!initialData.icon && !preview && (
           <IconPicker onChange={onIconSelect} asChild>
             <Button
@@ -115,12 +115,12 @@ export function Toolbar({
           onChange={(e) => onInput(e.target.value)}
           onKeyDown={onKeyDown}
           onBlur={disableInput}
-          className="text-5xl font-bold bg-transparent wrap-break-word outline-none text-[#3f3f3f] dark:text-[#cfcfcf] resize-none"
+          className="resize-none bg-transparent text-5xl font-bold wrap-break-word text-[#3f3f3f] outline-none dark:text-[#cfcfcf]"
         />
       ) : (
         <div
           onClick={enableInput}
-          className="pb-[11.5px] text-5xl font-bold wrap-break-word outline-none text-[#3f3f3f] dark:text-[#cfcfcf]"
+          className="pb-[11.5px] text-5xl font-bold wrap-break-word text-[#3f3f3f] outline-none dark:text-[#cfcfcf]"
         >
           {initialData.title}
         </div>

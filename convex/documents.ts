@@ -26,7 +26,7 @@ export const archive = mutation({
       const children = await ctx.db
         .query("documents")
         .withIndex("by_user_parent", (q) =>
-          q.eq("userId", userId).eq("parentDocument", documentId)
+          q.eq("userId", userId).eq("parentDocument", documentId),
         )
         .collect();
       for (const child of children) {
@@ -58,7 +58,7 @@ export const getSidebar = query({
     const documents = await ctx.db
       .query("documents")
       .withIndex("by_user_parent", (q) =>
-        q.eq("userId", userId).eq("parentDocument", args.parentDocument)
+        q.eq("userId", userId).eq("parentDocument", args.parentDocument),
       )
       .filter((q) => q.eq(q.field("isArchived"), false))
       .order("desc")
@@ -146,7 +146,7 @@ export const restore = mutation({
       const children = await ctx.db
         .query("documents")
         .withIndex("by_user_parent", (q) =>
-          q.eq("userId", userId).eq("parentDocument", documentId)
+          q.eq("userId", userId).eq("parentDocument", documentId),
         )
         .collect();
 

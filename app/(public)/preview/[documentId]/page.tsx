@@ -17,7 +17,7 @@ export default function DocumentIdPage() {
 
   const Editor = useMemo(
     () => dynamic(() => import("@/components/editor"), { ssr: false }),
-    []
+    [],
   );
   const document = useQuery(api.documents.getById, {
     documentId: params.documentId as Id<"documents">,
@@ -31,10 +31,10 @@ export default function DocumentIdPage() {
 
   if (document === undefined) {
     return (
-      <div className="md:max-w-3xl lg:max-w-4xl mx-auto mt-10">
+      <div className="mx-auto mt-10 md:max-w-3xl lg:max-w-4xl">
         <Cover.Skeleton />
-        <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
-          <div className="space-y-4 pl-8 pt-6">
+        <div className="mx-auto md:max-w-3xl lg:max-w-4xl">
+          <div className="space-y-4 pt-6 pl-8">
             <Skeleton className="h-14 w-[50%]" />
             <Skeleton className="h-4 w-[80%]" />
             <Skeleton className="h-4 w-[40%]" />
@@ -52,7 +52,7 @@ export default function DocumentIdPage() {
   return (
     <div className="mb-40">
       <Cover url={document.coverImage} preview />
-      <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
+      <div className="mx-auto md:max-w-3xl lg:max-w-4xl">
         <Toolbar initialData={document} preview />
         <Editor
           onChange={onChange}

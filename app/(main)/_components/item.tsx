@@ -82,7 +82,7 @@ export function Item({
           onExpand?.();
         }
         router.push(`/documents/${documentId}`);
-      }
+      },
     );
 
     toast.promise(promise, {
@@ -99,8 +99,8 @@ export function Item({
       role="button"
       style={{ paddingLeft: level ? `${level * 12 + 12}px` : "12px" }}
       className={cn(
-        "group cursor-pointer text-sm py-2 pr-3 w-full hover:bg-primary/5 flex items-center text-muted-foreground font-medium",
-        active && "bg-primary/5 text-primary"
+        "group hover:bg-primary/5 text-muted-foreground flex w-full cursor-pointer items-center py-2 pr-3 text-sm font-medium",
+        active && "bg-primary/5 text-primary",
       )}
       {...props}
     >
@@ -108,15 +108,15 @@ export function Item({
         <div
           role="button"
           onClick={handleExpand}
-          className="h-full rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 mr-1"
+          className="mr-1 h-full rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
         >
-          <ChevronIcon className="h-4 w-4 shrink-0 text-muted-foreground/50" />
+          <ChevronIcon className="text-muted-foreground/50 h-4 w-4 shrink-0" />
         </div>
       )}
       {documentIcon ? (
-        <div className="shrink-0 mr-2 text-[18px]">{documentIcon}</div>
+        <div className="mr-2 shrink-0 text-[18px]">{documentIcon}</div>
       ) : (
-        <Icon className="shrink-0 h-[18px] w-[18px] mr-2 text-muted-foreground" />
+        <Icon className="text-muted-foreground mr-2 h-[18px] w-[18px] shrink-0" />
       )}
       <span className="truncate">{label}</span>
       {isSearch && <Kbd className="ml-auto text-xs">⌘ K</Kbd>}
@@ -127,9 +127,9 @@ export function Item({
             <DropdownMenuTrigger onClick={(e) => e.stopPropagation()}>
               <div
                 role="button"
-                className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
+                className="ml-auto h-full rounded-sm opacity-0 group-hover:opacity-100 hover:bg-neutral-300 dark:hover:bg-neutral-600"
               >
-                <MoreHorizontalIcon className="h-4 w-4 text-muted-foreground" />
+                <MoreHorizontalIcon className="text-muted-foreground h-4 w-4" />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -139,11 +139,11 @@ export function Item({
               forceMount
             >
               <DropdownMenuItem variant="destructive" onClick={onArchive}>
-                <TrashIcon className="h-4 w-4 mr-2" />
+                <TrashIcon className="mr-2 h-4 w-4" />
                 Delete
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <div className="text-xs text-muted-foreground p-2">
+              <div className="text-muted-foreground p-2 text-xs">
                 Last edited by: {user?.fullName}
               </div>
             </DropdownMenuContent>
@@ -151,7 +151,7 @@ export function Item({
           <div
             role="button"
             onClick={onCreate}
-            className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
+            className="ml-auto h-full rounded-sm opacity-0 group-hover:opacity-100 hover:bg-neutral-300 dark:hover:bg-neutral-600"
           >
             <PlusIcon className="h-4 w-4" />
           </div>

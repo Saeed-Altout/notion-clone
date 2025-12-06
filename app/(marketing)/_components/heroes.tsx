@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Heroes() {
   return (
-    <div className="flex flex-col items-center justify-center max-w-5xl">
+    <div className="flex max-w-5xl flex-col items-center justify-center">
       <div className="flex items-center gap-x-8">
         <div className="relative h-[300px] w-[300px] sm:h-[350px] sm:w-[350px] md:h-[400px] md:w-[400px]">
           <Image
@@ -15,10 +15,10 @@ export function Heroes() {
             src="/documents-dark.png"
             alt="Documents"
             fill
-            className="object-contain hidden dark:block"
+            className="hidden object-contain dark:block"
           />
         </div>
-        <div className="relative h-[400px] w-[400px] hidden md:block">
+        <div className="relative hidden h-[400px] w-[400px] md:block">
           <Image
             src="/reading.png"
             alt="Reading"
@@ -29,7 +29,7 @@ export function Heroes() {
             src="/reading-dark.png"
             alt="Reading"
             fill
-            className="object-contain hidden dark:block"
+            className="hidden object-contain dark:block"
           />
         </div>
       </div>

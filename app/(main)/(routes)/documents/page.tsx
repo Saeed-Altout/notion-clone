@@ -28,7 +28,7 @@ export default function DocumentsPage() {
   };
 
   return (
-    <div className="h-full flex flex-col items-center justify-center space-y-4">
+    <div className="flex h-full flex-col items-center justify-center space-y-4">
       <Image
         src="/empty.png"
         alt="Empty"
@@ -47,7 +47,7 @@ export default function DocumentsPage() {
         Welcome to {user?.firstName}&apos;s Jotion
       </h2>
       <Button onClick={onCreate}>
-        <PlusCircleIcon className="w-4 h-4" />
+        <PlusCircleIcon className="h-4 w-4" />
         Create a note
       </Button>
     </div>

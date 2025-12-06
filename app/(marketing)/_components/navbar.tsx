@@ -19,14 +19,12 @@ export function Navbar() {
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 bg-background   flex items-center w-full p-6",
-        isScrolling && "border-b"
+        "bg-background fixed top-0 right-0 left-0 z-50 flex w-full items-center p-6 py-4",
+        isScrolling && "border-b",
       )}
     >
       <Logo />
-      <div className="md:ml-auto w-full justify-between md:justify-end flex items-center gap-x-2">
-        {isLoading && <Spinner />}
-
+      <div className="flex w-full items-center justify-between gap-x-2 md:ml-auto md:justify-end">
         {!isLoading && !isAuthenticated && (
           <div className="flex items-center gap-x-2">
             <SignInButton mode="modal">
@@ -39,7 +37,6 @@ export function Navbar() {
             </SignInButton>
           </div>
         )}
-
         {!isLoading && isAuthenticated && (
           <div className="flex items-center gap-x-2">
             <Button asChild variant="ghost" size="sm">

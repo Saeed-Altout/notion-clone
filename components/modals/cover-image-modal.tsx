@@ -46,7 +46,7 @@ export function CoverImageModal() {
       coverImage.onClose();
       return res;
     },
-    [edgestore, params.documentId, update, coverImage]
+    [edgestore, params.documentId, update, coverImage],
   );
 
   return (
@@ -64,7 +64,7 @@ export function CoverImageModal() {
             dropzoneOptions={{
               maxSize: 1024 * 1024 * 1, // 1 MB
             }}
-            className="w-full! outline-none border-2-primary/5 hover:border-primary transition-all"
+            className="border-2-primary/5 hover:border-primary w-full! transition-all outline-none"
           />
         </UploaderProvider>
       </DialogContent>

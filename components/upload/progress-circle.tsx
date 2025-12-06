@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils';
-import * as React from 'react';
+import { cn } from "@/lib/utils";
+import * as React from "react";
 
 /**
  * Props for the ProgressCircle component.
@@ -7,8 +7,7 @@ import * as React from 'react';
  * @interface ProgressCircleProps
  * @extends {React.HTMLAttributes<HTMLDivElement>}
  */
-export interface ProgressCircleProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ProgressCircleProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The progress value as a percentage (0-100).
    */
@@ -47,7 +46,7 @@ const ProgressCircle = React.forwardRef<HTMLDivElement, ProgressCircleProps>(
       <div
         ref={ref}
         className={cn(
-          'relative flex flex-col items-center justify-center text-white',
+          "relative flex flex-col items-center justify-center text-white",
           className,
         )}
         style={{
@@ -61,7 +60,7 @@ const ProgressCircle = React.forwardRef<HTMLDivElement, ProgressCircleProps>(
           width={size}
           height={size}
           viewBox={`0 0 ${size} ${size}`}
-          style={{ transform: 'rotate(-90deg)' }} // Start from top
+          style={{ transform: "rotate(-90deg)" }} // Start from top
         >
           {/* Background track */}
           <circle
@@ -80,7 +79,7 @@ const ProgressCircle = React.forwardRef<HTMLDivElement, ProgressCircleProps>(
             className="fill-none stroke-white"
             strokeDasharray={circumference}
             strokeDashoffset={offset}
-            style={{ transition: 'stroke-dashoffset 0.3s ease' }} // Smooth transition
+            style={{ transition: "stroke-dashoffset 0.3s ease" }} // Smooth transition
           />
         </svg>
         {/* Progress Percentage Text (centered visually) */}
@@ -89,6 +88,6 @@ const ProgressCircle = React.forwardRef<HTMLDivElement, ProgressCircleProps>(
     );
   },
 );
-ProgressCircle.displayName = 'ProgressCircle';
+ProgressCircle.displayName = "ProgressCircle";
 
 export { ProgressCircle };
