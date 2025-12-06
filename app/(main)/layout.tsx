@@ -1,11 +1,17 @@
 "use client";
 import { useConvexAuth } from "convex/react";
-import { redirect } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 
-import { Navigation } from "./_components/navigation";
-
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import { Spinner } from "@/components/ui/spinner";
 import { SearchCommand } from "@/components/search-command";
+
+import { NavActions } from "./_components/nav-actions";
+import { AppSidebar } from "./_components/app-sidebar";
 
 export default function MainLayout({
   children,
@@ -13,6 +19,7 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   const { isAuthenticated, isLoading } = useConvexAuth();
+  const params = useParams();
 
   if (isLoading) {
     return (
@@ -27,10 +34,24 @@ export default function MainLayout({
   }
 
   return (
-    <div className="flex h-full">
-      <Navigation />
-      <main className="h-full flex-1 overflow-y-auto">{children}</main>
-      <SearchCommand />
-    </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <header className="flex h-14 shrink-0 items-center gap-2">
+          <div className="flex flex-1 items-center gap-2 px-3">
+            <SidebarTrigger />
+          </div>
+          {!!params.documentId && (
+            <div className="ml-auto px-3">
+              <NavActions />
+            </div>
+          )}
+        </header>
+        <div className="flex flex-1 flex-col gap-4">
+          {children}
+          <SearchCommand />
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
