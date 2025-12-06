@@ -154,7 +154,7 @@ export function Navigation() {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar bg-sidebar relative z-40 flex h-full w-60 flex-col overflow-y-auto",
+          "group/sidebar bg-sidebar relative z-40 flex h-full w-60 flex-col overflow-y-auto border-r",
           isResetting && "transition-all duration-300 ease-in-out",
           isMobile && "w-0",
         )}
@@ -200,7 +200,7 @@ export function Navigation() {
       <div
         ref={navbarRef}
         className={cn(
-          "absolute top-0 left-60 z-50 w-[calc(100%-240px)]",
+          "absolute top-4 left-60 z-50 w-[calc(100%-240px)]",
           isResetting && "transition-all duration-300 ease-in-out",
           isMobile && "left-0 w-full",
         )}
