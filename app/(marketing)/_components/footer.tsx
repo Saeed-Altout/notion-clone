@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
+
+import { Button } from "@/components/ui/button";
 
 export function Footer() {
   return (

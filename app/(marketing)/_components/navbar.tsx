@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { SignInButton, UserButton } from "@clerk/nextjs";
+import { useConvexAuth } from "convex/react";
 
 import { cn } from "@/lib/utils";
 import { useScrollTop } from "@/hooks/use-scroll-top";
@@ -9,8 +10,6 @@ import { Logo } from "./logo";
 
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { Spinner } from "@/components/ui/spinner";
-import { useConvexAuth } from "convex/react";
 
 export function Navbar() {
   const isScrolling = useScrollTop();
